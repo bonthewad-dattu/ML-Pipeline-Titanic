@@ -1,9 +1,10 @@
 services:
   - type: web
-    name: titanic-ml-api
+    name: titanic-ml-pipeline
     env: python
-    buildCommand: "pip install -r requirements.txt"
-    startCommand: "gunicorn app:app"
+    buildCommand: pip install -r requirements.txt
+    startCommand: python app.py
+    pythonVersion: 3.9.18
     envVars:
       - key: PYTHON_VERSION
-        value: "3.9.0"
+        value: 3.9.18
