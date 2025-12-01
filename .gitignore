@@ -1,21 +1,54 @@
+# Python
 __pycache__/
-*.pyc
-*.pyo
-*.pyd
-.env
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environment
 venv/
 env/
+ENV/
+env.bak/
+venv.bak/
+
+# IDE
 .vscode/
 .idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Project specific
+models/best_model.pkl
 *.pkl
 *.csv
 *.txt
 eda_plots/
-best_model.pkl
-model_comparison.csv
-features.txt
+outputs/
 __pycache__/
-*.pyc
-*.pyo
-*.pyd
-.DS_Store
+*.log
+test.db
