@@ -319,9 +319,6 @@ def api_info():
         }
     })
 
-print("🚀 ML MODEL TRAINING STARTING")
-print("=" * 50)
-
 class TitanicMLPipeline:
     def __init__(self):
         self.df = None
@@ -661,8 +658,11 @@ class TitanicMLPipeline:
                 f.write(f"{feature}\n")
         print("   ✅ Feature list saved as 'features.txt'")
 
-def main():
-    """Main training function"""
+def train_model():
+    """Training function - can be called separately"""
+    print("🚀 ML MODEL TRAINING STARTING")
+    print("=" * 50)
+    
     pipeline = TitanicMLPipeline()
     
     try:
@@ -684,5 +684,19 @@ def main():
         traceback.print_exc()
 
 if __name__ == '__main__':
-    port = int(os.environ.get('PORT', 3000))
-    app.run(host='0.0.0.0', port=port, debug=False)
+    # Check if we should run training or start the Flask app
+    import sys
+    
+    if len(sys.argv) > 1 and sys.argv[1] == 'train':
+        # Run training mode
+        train_model()
+    else:
+        # Run Flask app in deployment mode
+        print("🚀 Starting Flask app in DEPLOYMENT mode...")
+        print("   (Use 'python app.py train' to train the model)")
+        print(f"   📍 Web interface: http://localhost:3000")
+        print(f"   📍 Health check: http://localhost:3000/health")
+        print(f"   📍 API info: http://localhost:3000/api/info")
+        
+        port = int(os.environ.get('PORT', 3000))
+        app.run(host='0.0.0.0', port=port, debug=False)
